@@ -1,6 +1,6 @@
 # Warden
 
-**Session-based authentication service in Go** — TOTP 2FA, recovery codes, device-aware session management, and brute-force protection. Built on PostgreSQL and Redis.
+**Session-based authentication service in Go** — TOTP 2FA, single-use recovery codes, device-aware session management, and brute-force protection. Built on PostgreSQL and Redis.
 
 ![Go](https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -95,8 +95,8 @@ Base path: `/api/v1`. Sessions are carried in an `HttpOnly` cookie (`session_id`
 | Method | Path | Description |
 |---|---|---|
 | `GET` | `/account/me` | Current account |
-| `PATCH` | `/account/me/password` | Change password |
 | `PATCH` | `/account/me/email` | Change email |
+| `PATCH` | `/account/me/password` | Change password |
 | `DELETE` | `/account/me` | Delete account |
 | `POST` | `/account/me/2fa/setup` | Begin 2FA setup (returns secret + QR) |
 | `POST` | `/account/me/2fa/confirm` | Confirm 2FA, receive recovery codes |
