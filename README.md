@@ -104,9 +104,3 @@ Base path: `/api/v1`. Sessions are carried in an `HttpOnly` cookie (`session_id`
 | `GET` | `/account/me/sessions` | List active sessions |
 | `DELETE` | `/account/me/sessions` | Revoke all other sessions |
 | `DELETE` | `/account/me/sessions/:id` | Revoke a specific session |
-
----
-
-## License
-
-MIT — see [LICENSE](LICENSE).
