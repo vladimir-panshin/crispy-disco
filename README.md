@@ -1,6 +1,6 @@
 # Warden
 
-**Session-based authentication service in Go** — TOTP 2FA, single-use recovery codes, device-aware session management, and brute-force protection. Built on PostgreSQL and Redis.
+**Session-based authentication service in Go** — TOTP 2FA, recovery codes, device-aware session management, and brute-force protection. Built on PostgreSQL and Redis.
 
 ![Go](https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
