@@ -1,24 +1,11 @@
 # Warden
 
-**Session-based authentication service in Go** — TOTP 2FA, single-use recovery codes, device-aware session management, and brute-force protection. Built on PostgreSQL and Redis.
+**Session-based authentication service in Go** — TOTP 2FA, recovery codes, device-aware session management, and brute-force protection. Built on PostgreSQL and Redis.
 
 ![Go](https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Warden is an authentication backend — registration, login, two-factor authentication, and session lifecycle, and deliberately nothing else. The goal is a small, readable core that's easy to build on.
-
----
-
-## Features
-
-- **Email + password authentication** with bcrypt password hashing.
-- **Session-based auth backed by Redis** — sessions are first-class and revocable (unlike stateless JWTs), which makes "log out", "log out everywhere", and per-device session listing possible.
-- **TOTP two-factor authentication** — QR-code provisioning for authenticator apps, plus single-use base32 recovery codes for account recovery.
-- **Race-free recovery codes** — a recovery code is consumed in a single atomic SQL statement, so it can't be redeemed twice under concurrent requests.
-- **Two-stage 2FA login** — a dedicated intermediate session state that cannot reach protected routes until the second factor is verified.
-- **Brute-force protection** — per-IP rate limiting on all authentication endpoints.
-- **Reverse-proxy aware** — configurable trusted proxies for correct client-IP resolution behind Cloudflare/nginx.
-- **Runs as a non-root container**, ships as a tiny static binary on Alpine.
 
 ---
 
