@@ -9,24 +9,6 @@ Warden is an authentication backend — registration, login, two-factor authenti
 
 ---
 
-## Architecture
-
-A small, layered codebase:
-
-```
-cmd/server      entry point, wiring, config
-auth            registration, login, 2FA verification (HTTP layer)
-account         account management: password, email, sessions, 2FA setup
-session         Redis-backed session manager (create, list, revoke)
-middleware      auth guard, pending-2FA guard, rate limiter
-db              PostgreSQL access (accounts, recovery codes)
-models          request DTOs and validation rules
-```
-
-Handlers stay thin — they parse HTTP, call domain logic, and shape responses. Cryptographic logic (TOTP, recovery-code generation) lives apart from the HTTP layer so it can be reasoned about and tested in isolation.
-
----
-
 ## Getting started
 
 ### With Docker (recommended)
