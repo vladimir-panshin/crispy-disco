@@ -5,8 +5,6 @@ A generic, thread-safe in-memory cache for Go, with per-key TTL and automatic ba
 ![Go](https://img.shields.io/badge/Go-1.26-00ADD8?logo=go&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-Type-safe via generics — `Cache[V]` stores values of a concrete type, no `interface{}`, no casts on the way out. Expired entries are removed both lazily (on access) and by an optional background sweeper.
-
 ## Install
 
 ```bash
