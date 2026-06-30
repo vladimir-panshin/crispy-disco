@@ -88,11 +88,9 @@ if c.SetNX("job:42", "running", 30*time.Second) {
 
 Under concurrent contention exactly one caller succeeds; the rest get `false`.
 
-## Thread safety
+## Concurrency & testing
 
-All operations are safe for concurrent use. Reads share an `RWMutex`; writes and expiry take the write lock. The test suite exercises this with the race detector — concurrent distinct keys, contended shared keys, concurrent `SetNX`, and concurrent `Close`.
-
-## Testing
+All operations are safe for concurrent use. Reads share an `RWMutex`; writes and expiry take the write lock. Concurrency is covered by the test suite under the race detector — concurrent distinct keys, contended shared keys, concurrent `SetNX`, and concurrent `Close`.
 
 ```bash
 go vet ./...
