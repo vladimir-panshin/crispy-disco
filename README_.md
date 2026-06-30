@@ -69,24 +69,22 @@ s, ok := c.Get("sess_1") // s is a Session, not interface{}
 
 ## Expiration
 
-A key expires when its TTL elapses. Removal happens two ways:
+A key expires when its TTL runs out. Expired entries are removed in two ways:
 
-- **Lazily** — an expired entry found during `Get`/`TTL` is dropped on the spot, so a stale value is never returned even with the sweeper disabled.
-- **In the background** — if `New` was given a positive interval, a sweeper periodically deletes expired entries so memory doesn't grow with abandoned keys.
+- **On access** — `Get` and `TTL` drop an expired entry when they hit it, so you never read a stale value, even with no background cleanup.
+- **In the background** — when `New` gets a positive interval, a sweeper clears expired entries periodically so old keys don't pile up in memory.
 
-With cleanup disabled (`New[V](0)`), expiration still works — expired keys are simply removed on access instead of proactively.
+If you pass `New[V](0)`, the sweeper is off but expiration still works — keys just get removed when you access them.
 
 ## SetNX as a lock
 
-`SetNX` ("set if not exists") writes only when no live key is present, which makes it a simple primitive for one-shot guards — e.g. ensuring a single owner among concurrent goroutines:
+`SetNX` writes only if the key isn't already set (and not expired). That makes it a basic lock: many goroutines call it, one wins.
 
 ```go
 if c.SetNX("job:42", "running", 30*time.Second) {
 	// won the slot — do the work
 }
 ```
-
-Under concurrent contention exactly one caller succeeds; the rest get `false`.
 
 ## Concurrency & testing
 
