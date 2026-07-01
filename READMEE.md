@@ -1,13 +1,13 @@
 # trybit-go
 
-**A Go client for the [Trybit](https://trybit.com) crypto-processing API** — invoices, balances, and statistics, with typed errors and zero dependencies.
+**A Go client for the [Trybit](https://trybit.com) crypto-processing API** — invoices, balances, and statistics.
 
 ![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?logo=go&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-green)
 [![Go Reference](https://pkg.go.dev/badge/github.com/trybit-go/trybit.svg)](https://pkg.go.dev/github.com/trybit-go/trybit)
 [![Go Report Card](https://goreportcard.com/badge/github.com/trybit-go/trybit)](https://goreportcard.com/report/github.com/trybit-go/trybit)
 
-trybit-go is a thin, idiomatic wrapper over the Trybit HTTP API — a resource-oriented client with a `context.Context` on every call, typed errors, and nothing pulled in from outside the standard library. The goal is a small, readable core that's easy to audit and build on.
+Covers the Trybit invoice and account API. No external dependencies — standard library only.
 
 ## Install
 
@@ -50,7 +50,7 @@ func main() {
 
 ## API coverage
 
-This release covers the invoice and account endpoints. Payouts, postback webhooks, and static wallets are planned for a later release.
+Payouts, postback webhooks, and static wallets are planned for a later release.
 
 | Method | Endpoint | Description |
 |---|---|---|
