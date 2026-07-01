@@ -98,11 +98,3 @@ if errors.As(err, &apiErr) {
 	fmt.Println(apiErr.StatusCode, apiErr.Fields)
 }
 ```
-
-## Amounts
-
-All the amount fields are `float64`. That's fine for showing values, but
-`float64` can't hold every crypto amount exactly (some go to 18 decimals) and
-you get the usual floating-point rounding. So don't add up balances or compare
-amounts for equality straight off these fields — convert to a decimal type
-first if it matters.
