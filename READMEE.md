@@ -44,7 +44,7 @@ func main() {
 }
 ```
 
-## What's here
+## Coverage
 
 Invoices and account endpoints so far:
 
@@ -59,7 +59,7 @@ Invoices and account endpoints so far:
 
 Payouts, postback webhooks and static wallets aren't wrapped yet — they're next.
 
-## More examples
+## Usage
 
 ```go
 // Optional fields go straight on the params struct; the client packs the
@@ -99,14 +99,10 @@ if errors.As(err, &apiErr) {
 }
 ```
 
-## A heads-up on amounts
+## Amounts
 
 All the amount fields are `float64`. That's fine for showing values, but
 `float64` can't hold every crypto amount exactly (some go to 18 decimals) and
 you get the usual floating-point rounding. So don't add up balances or compare
 amounts for equality straight off these fields — convert to a decimal type
 first if it matters.
-
-## License
-
-MIT
