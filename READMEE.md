@@ -1,4 +1,4 @@
-# trybit-go
+# trybit
 
 Go client for the [Trybit](https://trybit.com) crypto-processing API.
 
