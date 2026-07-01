@@ -101,8 +101,4 @@ if errors.As(err, &apiErr) {
 
 ## Amounts
 
-All the amount fields are `float64`. That's fine for showing values, but
-`float64` can't hold every crypto amount exactly (some go to 18 decimals) and
-you get the usual floating-point rounding. So don't add up balances or compare
-amounts for equality straight off these fields — convert to a decimal type
-first if it matters.
+Amount fields are float64, mirroring the API's JSON numbers. This is fine for reading and displaying values, but float64 cannot exactly represent every crypto amount (assets go up to 18 decimals) and is subject to binary rounding. Don't reconcile balances or compare amounts for equality directly on these fields — convert to a decimal type first.
