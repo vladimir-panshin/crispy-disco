@@ -61,8 +61,6 @@ Payouts, postback webhooks, and static wallets are planned for a later release.
 | `Invoice.Statistics` | `POST /invoice/merchant/statistics` | Invoice counts and amounts by status |
 | `Balance.All` | `POST /merchant/wallet/balance/all` | Balances across all currencies |
 
-Authorization is handled automatically: the API key passed to `New` is sent as `Authorization: Token <key>` on every request.
-
 ## Usage
 
 ### Invoices
@@ -124,7 +122,3 @@ if errors.As(err, &apiErr) {
 ## A note on monetary precision
 
 Amount fields are `float64`, mirroring the API's JSON numbers. This is fine for reading and displaying values, but `float64` cannot exactly represent every crypto amount (assets go up to 18 decimals) and is subject to binary rounding. Don't reconcile balances or compare amounts for equality directly on these fields — convert to a decimal type first.
-
-## License
-
-MIT
